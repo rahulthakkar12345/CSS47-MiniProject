@@ -1,0 +1,69 @@
+body {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+a {
+	text-decoration: none;
+	background-color: #262626;
+	font-family: sans-serif;
+	font-size: 40px;
+	border: 4px solid #262626;
+	padding: 40px 80px;
+	position: relative;
+	color: transparent;
+	/* 5 */
+	/* hide the content flowing out of the container */
+	overflow: hidden;
+}
+
+/* setting two layers with two pseudo elements. */
+
+/* 1 */
+/* we will set the first layer with ::before */
+a:before {
+	content: 'BLUE';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: blue;
+	color: red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.5s;
+}
+
+/* 2 */
+/* we will set the second layer with ::after */
+a:after {
+	content: 'RED';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: red;
+	color: blue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.5s;
+	transform: translate(-100%, 100%);
+}
+
+/* 3 */
+/* we will have hover effect on first layer */
+a:hover:before {
+	transform: translate(100%, -100%);
+}
+
+/* 4 */
+/* we will have hover effect on second layer */
+a:hover:after {
+	transform: translate(0, 0);
+}
